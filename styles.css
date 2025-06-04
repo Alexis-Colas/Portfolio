@@ -12,8 +12,8 @@ html, body {
 
 .console{
     background-color: #e33d3d;
-    height: 600px;
-    width: 700px;
+    height: 750px;
+    width: 875px;
     border-radius: 15% 15% 30px 30px;
     border: 2px solid black;
 
@@ -23,13 +23,13 @@ html, body {
 }
 
 .leftC{
-    width: 150px;
-    height: 600px;
+    width: 188px;
+    height: 750px;
 }
 
 .centerC{
-    width: 400px;
-    height: 600px;
+    width: 500px;
+    height: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,13 +37,13 @@ html, body {
 }
 
 .rightC{
-    width: 150px;
-    height: 600px;
+    width: 188px;
+    height: 750px;
 }
 
 .ecran{
     background: whitesmoke;
-    height: 250px;
+    height: 313px;
     border: 3px solid black;
 }
 
@@ -57,11 +57,11 @@ html, body {
  */
 
 .Ehaut{
-    width: 400px;
+    width: 500px;
     margin-bottom: 10px;
 }
 
 .Ebas{
-    width: 350px;
+    width: 438px;
     margin-top: 10px;
 }

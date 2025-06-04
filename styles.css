@@ -10,8 +10,58 @@ html, body {
     align-items: center;
 }
 
-#console{
+.console{
     background-color: #e33d3d;
     height: 600px;
     width: 700px;
+    border-radius: 15% 15% 30px 30px;
+    border: 2px solid black;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.leftC{
+    width: 150px;
+    height: 600px;
+}
+
+.centerC{
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightC{
+    width: 150px;
+    height: 600px;
+}
+
+.ecran{
+    background: whitesmoke;
+    height: 250px;
+    border: 3px solid black;
+}
+
+/*
+.borderEH{
+    height: 255px;
+    width: 405px;
+    background: #cd3838;
+}
+
+ */
+
+.Ehaut{
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.Ebas{
+    width: 350px;
+    margin-top: 10px;
 }

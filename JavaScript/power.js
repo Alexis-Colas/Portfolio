@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const voyant = document.querySelector('.voyant');
     const ecranHaut = document.querySelector('.Ehaut');
     const afficheApp = document.querySelector('.container-ecran-bas');
+    const afficheAppInfo = document.querySelector('.container-EH-info-app');
 
     let estAllume = false;
     let timeouts = [];
@@ -51,15 +52,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function gererAffichageApp(on) {
         if (on) {
-            afficheApp.classList.add('container-ecran-bas-visible');
+            afficheApp.style.display = 'flex';
             timeouts.push(setTimeout(() => {
                 afficheApp.style.opacity = '1';
+                afficheAppInfo.style.display = 'flex';
+                afficheAppInfo.style.opacity = '1';
             }, 5500));
             document.getElementById('app0').classList.add('select-app');
             window.numAppSelect = 0;
         } else {
             afficheApp.style.opacity = '0';
-            afficheApp.classList.remove('container-ecran-bas-visible');
+            window.numAppSelect = 0;
+            document.querySelector('.nom-app').textContent = 'Information';
+            document.querySelector('.info-logo img').src = 'images/fiche-de-donnees.png';
+            afficheApp.style.display = 'none';
+            afficheAppInfo.style.display = 'none';
+            document.querySelector('.select-app').classList.remove('select-app');
         }
     }
 
@@ -67,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.ledPower').classList.toggle('led-on');
         resetTimeouts();
 
-        // Attente pour simuler l’allumage
         setTimeout(() => {
             toggleEcrans(!estAllume);
 

@@ -294,7 +294,7 @@ html, body {
 }
 
 .titre-portfolio {
-    display: inline-block;
+    display: none;
     color: black;
     font-family: 'Press Start 2P', monospace;
     font-size: 24px;

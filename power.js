@@ -3,72 +3,86 @@ document.addEventListener('DOMContentLoaded', function () {
     const ecrans = document.querySelectorAll('.ecran');
     const label = document.querySelector('.titre-portfolio');
     const voyant = document.querySelector('.voyant');
-    const ecran_haut = document.querySelector('.Ehaut');
-    let estAllume = false;
-    let clignotements = [];
+    const ecranHaut = document.querySelector('.Ehaut');
+    const afficheApp = document.querySelector('.container-ecran-bas');
 
-    let timeoutFadeIn = null;
-    let timeoutFadeOut = null;
-    let timeoutHideLabel = null;
+    let estAllume = false;
+    let timeouts = [];
+    window.numAppSelect = 0;
+
+    function resetTimeouts() {
+        timeouts.forEach(id => clearTimeout(id));
+        timeouts = [];
+    }
+
+    function toggleEcrans(on) {
+        ecrans.forEach(ecran => {
+            ecran.classList.toggle('ecran-on', on);
+        });
+    }
+
+    function afficherTitre() {
+        label.classList.add('titre-portfolio-view');
+        ecranHaut.classList.add('Ehaut-centre');
+
+        timeouts.push(setTimeout(() => label.style.opacity = '1', 1000));
+
+        timeouts.push(setTimeout(() => {
+            label.style.opacity = '0';
+            timeouts.push(setTimeout(() => {
+                label.classList.remove('titre-portfolio-view');
+                ecranHaut.classList.remove('Ehaut-centre');
+            }, 1000));
+        }, 4000));
+    }
+
+    function clignoterVoyant() {
+        timeouts.push(setTimeout(() => {
+            for (let i = 0; i < 7 * 2; i++) {
+                timeouts.push(setTimeout(() => {
+                    voyant.classList.toggle('voyant-orange');
+                }, i * 300));
+            }
+            timeouts.push(setTimeout(() => {
+                voyant.classList.add('voyant-blue');
+            }, 4200));
+        }, 1500))
+    }
+
+    function gererAffichageApp(on) {
+        if (on) {
+            afficheApp.classList.add('container-ecran-bas-visible');
+            timeouts.push(setTimeout(() => {
+                afficheApp.style.opacity = '1';
+            }, 5500));
+            document.getElementById('app0').classList.add('select-app');
+            window.numAppSelect = 0;
+        } else {
+            afficheApp.style.opacity = '0';
+            afficheApp.classList.remove('container-ecran-bas-visible');
+        }
+    }
 
     button.addEventListener('click', function () {
         document.querySelector('.ledPower').classList.toggle('led-on');
+        resetTimeouts();
 
-        if (timeoutFadeIn) clearTimeout(timeoutFadeIn);
-        if (timeoutFadeOut) clearTimeout(timeoutFadeOut);
-        if (timeoutHideLabel) clearTimeout(timeoutHideLabel);
-
+        // Attente pour simuler l’allumage
         setTimeout(() => {
-            ecrans.forEach((ecran) => {
-                ecran.classList.toggle('ecran-on');
-            });
-
-            label.classList.add('titre-portfolio-view');
-            ecran_haut.classList.add('Ehaut-centre');
+            toggleEcrans(!estAllume);
 
             if (!estAllume) {
-                timeoutFadeIn = setTimeout(() => {
-                    label.style.opacity = '1';
-                }, 1000);
-
-                estAllume = true;
-
-                timeoutFadeOut = setTimeout(() => {
-                    label.style.opacity = '0';
-
-                    timeoutHideLabel = setTimeout(() => {
-                        label.classList.remove('titre-portfolio-view');
-                        ecran_haut.classList.remove('Ehaut-centre');
-                    }, 1000);
-                }, 3000);
-
+                afficherTitre();
+                clignoterVoyant();
             } else {
-                voyant.classList.remove('voyant-blue')
-                estAllume = false;
+                voyant.classList.remove('voyant-orange', 'voyant-blue');
                 label.style.opacity = '0';
                 label.classList.remove('titre-portfolio-view');
-                ecran_haut.classList.remove('Ehaut-centre');
+                ecranHaut.classList.remove('Ehaut-centre');
             }
+
+            gererAffichageApp(!estAllume);
+            estAllume = !estAllume;
         }, 500);
-
-        if(!estAllume){
-            setTimeout(() => {
-                for (let i = 0; i < 7 * 2; i++) {
-                    const id = setTimeout(() => {
-                        voyant.classList.toggle('voyant-orange')
-                    }, i * 300);
-                    clignotements.push(id);
-                }
-                const idBlue = setTimeout(() => {
-                    voyant.classList.add('voyant-blue')
-                }, 4200);
-                clignotements.push(idBlue);
-            }, 3000);
-        }else{
-            clignotements.forEach(id => clearTimeout(id));
-            clignotements = [];
-            voyant.classList.remove('voyant-orange', 'voyant-blue');
-        }
-
     });
 });

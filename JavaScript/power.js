@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('.Bpower');
-    const ecrans = document.querySelectorAll('.ecran');
+    let ecrans = document.querySelectorAll('.ecran');
     const label = document.querySelector('.titre-portfolio');
     const voyant = document.querySelector('.voyant');
     const ecranHaut = document.querySelector('.Ehaut');
@@ -10,20 +10,22 @@ document.addEventListener('DOMContentLoaded', function () {
     let estAllume = false;
     let timeouts = [];
     window.numAppSelect = 0;
+    window.initFinish = false;
+    window.navigApp = true;
 
     function resetTimeouts() {
         timeouts.forEach(id => clearTimeout(id));
         timeouts = [];
     }
 
-    function toggleEcrans(on) {
+    function toggleEcrans() {
         ecrans.forEach(ecran => {
-            ecran.classList.toggle('ecran-on', on);
+            ecran.classList.toggle('ecran-on');
         });
     }
 
     function afficherTitre() {
-        label.classList.add('titre-portfolio-view');
+        label.style.display = 'flex';
         ecranHaut.classList.add('Ehaut-centre');
 
         timeouts.push(setTimeout(() => label.style.opacity = '1', 1000));
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         timeouts.push(setTimeout(() => {
             label.style.opacity = '0';
             timeouts.push(setTimeout(() => {
-                label.classList.remove('titre-portfolio-view');
+                label.style.display = 'none';
                 ecranHaut.classList.remove('Ehaut-centre');
             }, 1000));
         }, 4000));
@@ -52,31 +54,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function gererAffichageApp(on) {
         if (on) {
-            afficheApp.style.display = 'flex';
             timeouts.push(setTimeout(() => {
-                afficheApp.style.opacity = '1';
+                afficheApp.style.display = 'flex';
                 afficheAppInfo.style.display = 'flex';
+                afficheApp.style.opacity = '1';
                 afficheAppInfo.style.opacity = '1';
             }, 5500));
-            document.getElementById('app0').classList.add('select-app');
-            window.numAppSelect = 0;
         } else {
             afficheApp.style.opacity = '0';
-            window.numAppSelect = 0;
-            document.querySelector('.nom-app').textContent = 'Information';
-            document.querySelector('.info-logo img').src = 'images/fiche-de-donnees.png';
-            afficheApp.style.display = 'none';
-            afficheAppInfo.style.display = 'none';
-            document.querySelector('.select-app').classList.remove('select-app');
+            afficheAppInfo.style.opacity = '0';
+            cachesEcran();
         }
+    }
+
+    function cachesEcran(){
+        const ecrans = document.querySelectorAll('.estEcran');
+        ecrans.forEach(ecran => {
+            ecran.style.display = 'none'
+        });
     }
 
     button.addEventListener('click', function () {
         document.querySelector('.ledPower').classList.toggle('led-on');
         resetTimeouts();
+        window.navigApp = true;
 
         setTimeout(() => {
-            toggleEcrans(!estAllume);
+            cachesEcran();
+            toggleEcrans();
 
             if (!estAllume) {
                 afficherTitre();
@@ -84,12 +89,19 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 voyant.classList.remove('voyant-orange', 'voyant-blue');
                 label.style.opacity = '0';
-                label.classList.remove('titre-portfolio-view');
                 ecranHaut.classList.remove('Ehaut-centre');
+                cachesEcran();
             }
 
             gererAffichageApp(!estAllume);
             estAllume = !estAllume;
+            if(estAllume){
+                timeouts.push(setTimeout(() => {
+                    window.initFinish = !window.initFinish;
+                }, 5600))
+            } else {
+                window.initFinish = !window.initFinish;
+            }
         }, 500);
     });
 });

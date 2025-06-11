@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const flecheDroite = document.querySelector('.Fdroite');
     const flecheBas = document.querySelector('.Fbas');
     const flecheGauche = document.querySelector('.Fgauche');
+    window.buttonA = document.querySelector('.Ba');
 
     function removeSelectApp(){
         const appActuelle = document.querySelector('.select-app');
@@ -15,31 +16,39 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     flecheHaut.addEventListener('click', function () {
-        removeSelectApp();
-        window.numAppSelect = (window.numAppSelect + 4) % 8;
-        addSelectApp();
-        updateAppInfo(window.numAppSelect);
+        if(window.initFinish && window.navigApp){
+            removeSelectApp();
+            window.numAppSelect = (window.numAppSelect + 4) % 8;
+            addSelectApp();
+            updateAppInfo(window.numAppSelect);
+        }
     });
 
     flecheBas.addEventListener('click', function () {
-        removeSelectApp()
-        window.numAppSelect = (window.numAppSelect - 4 + 8) % 8;
-        addSelectApp();
-        updateAppInfo(window.numAppSelect);
+        if (window.initFinish && window.navigApp){
+            removeSelectApp()
+            window.numAppSelect = (window.numAppSelect - 4 + 8) % 8;
+            addSelectApp();
+            updateAppInfo(window.numAppSelect);
+        }
     });
 
     flecheGauche.addEventListener('click', function () {
-        removeSelectApp()
-        window.numAppSelect = (window.numAppSelect - 1 + 8) % 8;
-        addSelectApp();
-        updateAppInfo(window.numAppSelect);
+        if (window.initFinish && window.navigApp){
+            removeSelectApp()
+            window.numAppSelect = (window.numAppSelect - 1 + 8) % 8;
+            addSelectApp();
+            updateAppInfo(window.numAppSelect);
+        }
     });
 
     flecheDroite.addEventListener('click', function () {
-        removeSelectApp()
-        window.numAppSelect = (window.numAppSelect + 1) % 8;
-        addSelectApp();
-        updateAppInfo(window.numAppSelect);
+        if (window.initFinish && window.navigApp){
+            removeSelectApp()
+            window.numAppSelect = (window.numAppSelect + 1) % 8;
+            addSelectApp();
+            updateAppInfo(window.numAppSelect);
+        }
     });
 
     const appInfos = [
@@ -54,19 +63,19 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     function updateAppInfo(index) {
-        const nomLabel = document.querySelector('.nom-app');
-        const logoImg = document.querySelector('.info-logo img');
+        const nomLabel = document.getElementById('nom-app');
+        const logoImg = document.getElementById('info-img');
 
         const info = appInfos[index];
         if (info) {
             nomLabel.textContent = info.nom;
             logoImg.src = info.image;
             if (info.nom === "") {
-                document.querySelector('.label-action').textContent = '';
-                document.querySelector('.info-logo img').style.display = 'none';
+                document.getElementById('label-action').textContent = '';
+                document.getElementById('info-img').style.display = 'none';
             } else {
-                document.querySelector('.label-action').textContent = 'A - Ouvrir';
-                document.querySelector('.info-logo img').style.display = 'block';
+                document.getElementById('label-action').textContent = 'A - Ouvrir';
+                document.getElementById('info-img').style.display = 'block';
             }
         }
     }

@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="StyleSheet/styles.css" rel="stylesheet">
     <link href="StyleSheet/homeButton.css" rel="stylesheet">
-    <link href="StyleSheet/ecranBas.css" rel="stylesheet">
+    <link href="StyleSheet/menu.css" rel="stylesheet">
+    <link href="StyleSheet/information.css" rel="stylesheet">
+    <link href="StyleSheet/profil.css" rel="stylesheet">
+    <link href="StyleSheet/github.css" rel="stylesheet">
+    <link href="StyleSheet/UE.css" rel="stylesheet">
     <script src="JavaScript/power.js" defer></script>
     <script src="JavaScript/affichageApp.js" defer></script>
+    <script src="JavaScript/home.js" defer></script>
+    <script src="JavaScript/information.js" defer></script>
+    <script src="JavaScript/profil.js" defer></script>
+    <script src="JavaScript/github.js" defer></script>
+    <script src="JavaScript/horloge.js" defer></script>
+    <script src="JavaScript/UE1.js" defer></script>
     <title>Portfolio</title>
 </head>
 <body>
@@ -47,26 +57,69 @@
         <div class="camera"></div>
         <div class="borderE borderEH">
             <div class="ecran Ehaut">
-                <label class="titre-portfolio">PORTFOLIO</label>
-                <div class="container-EH-info-app">
-                    <div style="height: 43px"></div>
-                    <div class="info-logo container-info">
-                        <img src="images/fiche-de-donnees.png">
+                <label class="titre-portfolio estEcran">PORTFOLIO</label>
+                <div class="container-EH-info-app estEcran">
+                    <div class="titre" style="height: 43px">
+                        <label id="horloge"></label>
                     </div>
-                    <div class="info-nom container-info">
-                        <label class="nom-app">Information</label>
+                    <div class="info" id="info-logo">
+                        <img id="info-img" src="images/fiche-de-donnees.png">
                     </div>
-                    <div class="label-action container-info">
-                        <label>A - Ouvrir</label>
+                    <div class="info" id="info-nom">
+                        <label id="nom-app">Information</label>
                     </div>
+                    <div class="aide" id="label-action">
+                        <label id="labelApp">A - Ouvrir</label>
+                    </div>
+                </div>
+                <div class="information-haut estEcran globalEcranHaut">
+                    <label class="titre">UE choisies</label>
+                    <br>
+                    <label class="info">Les UE choisies sont l'UE 1 et l'UE 4.</label>
+                    <br>
+                    <label class="aide">Pour plus de détails, sélectionnez une UE.</label>
+                </div>
+                <div class="information-UE1-haut estEcran globalEcranHaut">
+                    <label class="titre">UE 1</label>
+                    <br>
+                    <label class="info">Liste des savoirs et savoirs-faire de l'UE 1.</label>
+                    <br>
+                    <label class="aide">Appuyer sur HOME pour revenir au menu.</label>
+                </div>
+                <div class="information-UE4-haut estEcran globalEcranHaut">
+                    <label class="titre">UE 4</label>
+                    <br>
+                    <label class="info">Liste des savoirs et savoirs-faire de l'UE 4.</label>
+                    <br>
+                    <label class="aide">Appuyer sur HOME pour revenir au menu.</label>
+                </div>
+                <div class="estEcran globalEcranHaut" id="profil-haut">
+                    <label class="titre">Profil</label>
+                    <br>
+                    <label class="info">
+                        Nom: Colas Prénom: Alexis
+                        Formation: BUT Informatique Lieu: Belfort
+                    </label>
+                    <br>
+                    <label class="aide">Appuyer sur HOME pour revenir au menu.</label>
+                </div>
+                <div class="estEcran globalEcranHaut" id="github-haut">
+                    <label class="titre">Github</label>
+                    <br>
+                    <label class="info">Liste de mes diférents projets où j'ai participé.</label>
+                    <br>
+                    <label class="aide">Cliquer sur un des projets pour y accéder.</label>
+                </div>
+                <div class="estEcran globalEcranHaut" id="UE1-projet-haut">
+                    <img id="img-projet" src="">
                 </div>
             </div>
         </div>
         <div class="borderE borderEB">
             <div class="ecran Ebas">
-                <div class="container-ecran-bas">
+                <div class="container-ecran-bas estEcran">
                     <div class="container-app">
-                        <div class="app" id="app0">
+                        <div class="app select-app" id="app0">
                             <img src="images/fiche-de-donnees.png">
                         </div>
                         <div class="app" id="app1">
@@ -85,6 +138,96 @@
                             <img src="images/sociale.png">
                         </div>
                     </div>
+                </div>
+                <div class="information-bas estEcran">
+                    <label class="button-ue" id="UE1">UE 1</label>
+                    <label class="button-ue" id="UE4">UE 4</label>
+                </div>
+                <div class="estEcran" id="listeSavoirUE1">
+                    <ul>
+                        <li>Savoir et Savoir-faire
+                            <ul>
+                                <li>Information</li>
+                                <li>Profil</li>
+                                <li>Information</li>
+                                <li>Profil</li>
+                                <li>Information</li>
+                                <li>Profil</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="estEcran" id="listeSavoirUE4">
+                    <ul>
+                        <li>Savoir et Savoir-faire
+                            <ul>
+                                <li>Information2</li>
+                                <li>Profil2</li>
+                                <li>Information2</li>
+                                <li>Profil2</li>
+                                <li>Information2</li>
+                                <li>Profil2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="estEcran" id="profil-bas">
+                    <p>
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                        Long blabla pour dirt qui je suis et ce que j'aime dans l'info.
+                        en gros me présenter...
+                    </p>
+                </div>
+                <div class="estEcran" id="github-bas">
+                    <a class="github-lien" href="#">p1</a>
+                    <a class="github-lien" href="#">p2</a>
+                    <a class="github-lien" href="#">p3</a>
+                    <a class="github-lien" href="#">p4</a>
+                </div>
+                <div class="estEcran" id="UE1-projet-bas">
+                    <label id="projet-name">Test</label>
+                    <br>
+                    <label class="sous-titre-projet">Description</label>
+                    <p id="projet-description"></p>
+                    <label class="sous-titre-projet">Savoir / Savoir-faire</label>
+                    <p id="projet-savoir"></p>
                 </div>
             </div>
         </div>

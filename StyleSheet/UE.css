@@ -1,0 +1,24 @@
+#UE1-projet-bas{
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 5px 0 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#projet-name{
+    border-bottom: 2px solid black;
+    border-radius: 0 0 10px 10px ;
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    width: 100%;
+    display: inline;
+}
+
+.sous-titre-projet{
+    border-bottom: solid 1px black;
+    display: inline;
+    width: 100%;
+}

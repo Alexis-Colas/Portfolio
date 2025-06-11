@@ -1,0 +1,55 @@
+.information-bas{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+}
+
+.button-ue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    background: #eaeaea;
+    border: solid 1px black;
+}
+
+#UE1{
+    border-radius: 10px 0 0 10px;
+}
+
+#UE4{
+    border-radius: 0 10px 10px 0;
+}
+
+.titre{
+    border-bottom: 2px solid black;
+    border-radius: 0 0 10px 10px ;
+    width: 100%;
+    text-align: center;
+}
+
+.aide{
+    border-top: 2px solid black;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.info{
+    height: 95%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#listeSavoirUE1{
+    display: none;
+}
+#listeSavoirUE4{
+    display: none;
+}

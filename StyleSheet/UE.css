@@ -7,6 +7,13 @@
     overflow-x: hidden;
 }
 
+#UE1-projet-haut{
+    display: none;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 #projet-name{
     border-bottom: 2px solid black;
     border-radius: 0 0 10px 10px ;
@@ -21,4 +28,20 @@
     border-bottom: solid 1px black;
     display: inline;
     width: 100%;
+}
+
+#img-projet {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+    border: solid 1px black;
+}
+
+#video-projet {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+    border: solid 1px black;
 }

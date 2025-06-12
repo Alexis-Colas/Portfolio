@@ -9,43 +9,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const projetUE1 = [
         {
-            nom: 'Test0',
-            description: 'blabla0',
-            savoir: 'c1, c2, c4',
-            image: 'images/livre.png'
+            nom: 'Quixo Decider',
+            description: 'DDurant un projet où l\'on devait programmer un jeu de société (Quixo), nous avons dû développer une IA' +
+                         ' contre laquelle on pouvait jouer. Le but était de réfléchir à une stratégie et de l\'implémenter.' +
+                         ' La stratégie développée consiste à vérifier si l\'adversaire a un alignement de 3 dés.' +
+                         'Si c’est le cas, alors l\'IA bloque cet alignement. Sinon, elle joue aléatoirement parmi les destinations possibles. ',
+            savoir: 'Transposer une situation/problème complexe en un programme<br>' +
+                    'Implémenter une stratégie d\'IA',
+            image: 'images/QuixoDecider.mp4'
         },
         {
-            nom: 'Test1',
-            description: 'blabla1',
-            savoir: 'c1, c3, c4',
-            image: 'images/utilisateur.png'
+            nom: 'pas fini',
+            description: 'pas fini',
+            savoir: 'pas fini',
+            image: ''
         },
         {
-            nom: 'Test2',
-            description: 'blabla2',
-            savoir: 'c2, c3, c4',
-            image: 'images/sociale.png'
+            nom: 'pas fini',
+            description: 'pas fini',
+            savoir: 'pas fini',
+            image: ''
         }
     ]
 
     const projetUE4 = [
         {
-            nom: 'Test-1',
-            description: 'blabla0',
-            savoir: 'c1, c2, c4',
-            image: 'images/livre.png'
+            nom: 'MCD Trida',
+            description: 'Durant ce projet nous avons dû réaliser un MCD, ce qui permet de représenter une situation' +
+                         ' sous forme graphique et de créer la base de données. Cela permet de faciliter la recherche' +
+                         ' et la manipulation de la base de données',
+            savoir: 'Traduire une situation en un modèle MCD<br>' +
+                    'Savoir faire un MCD',
+            image: 'images/MCD_trida.png'
         },
         {
-            nom: 'Test-2',
-            description: 'blabla1',
-            savoir: 'c1, c3, c4',
-            image: 'images/utilisateur.png'
+            nom: 'pas fini',
+            description: 'pas fini',
+            savoir: 'pas fini',
+            image: ''
         },
         {
-            nom: 'Test-3',
-            description: 'blabla2',
-            savoir: 'c2, c3, c4',
-            image: 'images/sociale.png'
+            nom: 'pas fini',
+            description: 'pas fini',
+            savoir: 'pas fini',
+            image: ''
         }
     ]
 
@@ -53,13 +60,29 @@ document.addEventListener('DOMContentLoaded', function () {
         if(window.UE == 1){
             document.getElementById('projet-name').textContent = projetUE1[num].nom;
             document.getElementById('projet-description').textContent = projetUE1[num].description;
-            document.getElementById('projet-savoir').textContent = projetUE1[num].savoir;
-            document.getElementById('img-projet').src = projetUE1[num].image;
+            document.getElementById('projet-savoir').innerHTML = projetUE1[num].savoir;
+            if(num == 0){
+                document.getElementById('video-projet').style.display = 'block';
+                document.getElementById('img-projet').style.display = 'none';
+                document.getElementById('video-projet').src = projetUE1[num].image;
+            }else{
+                document.getElementById('video-projet').style.display = 'none';
+                document.getElementById('img-projet').style.display = 'block';
+                document.getElementById('img-projet').src = projetUE1[num].image;
+            }
         } else if (window.UE == 4){
             document.getElementById('projet-name').textContent = projetUE4[num].nom;
             document.getElementById('projet-description').textContent = projetUE4[num].description;
-            document.getElementById('projet-savoir').textContent = projetUE4[num].savoir;
-            document.getElementById('img-projet').src = projetUE4[num].image;
+            document.getElementById('projet-savoir').innerHTML = projetUE4[num].savoir;
+            if(num == 5){
+                document.getElementById('video-projet').style.display = 'block';
+                document.getElementById('img-projet').style.display = 'none';
+                document.getElementById('video-projet').src = projetUE4[num].image;
+            }else{
+                document.getElementById('video-projet').style.display = 'none';
+                document.getElementById('img-projet').style.display = 'block';
+                document.getElementById('img-projet').src = projetUE4[num].image;
+            }
         }
     }
 

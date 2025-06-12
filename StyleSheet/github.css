@@ -9,6 +9,9 @@
 
 .github-lien{
     background: #a0a0a0;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .github-lien:hover{
